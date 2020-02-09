@@ -1,0 +1,20 @@
+<div [formGroup]="form">
+    <div [ngSwitch]="question.controlType">
+        <mat-form-field class="example-full-width">
+            <input
+                matInput
+                *ngSwitchCase="'textbox'"
+                [placeholder]="question.label"
+                [formControlName]="question.key"
+                [id]="question.key"
+                [type]="question.type"
+            >
+        </mat-form-field>
+    </div>
+    <div
+        class="errorMessage"
+        *ngIf="!isValid"
+    >
+        {{question.label}} is required
+    </div>
+</div>

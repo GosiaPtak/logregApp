@@ -1,0 +1,35 @@
+<div>
+    <form
+        (ngSubmit)="onSubmit($event)"
+        [formGroup]="form"
+    >
+        <div
+            *ngFor="let question of questions"
+            class="form-row"
+        >
+            <app-form-question
+                [question]="question"
+                [form]="form"
+            >
+            </app-form-question>
+        </div>
+        <mat-card-actions>
+            <button
+                mat-stroked-button
+                color="primary"
+                type="submit"
+                [disabled]="!form.valid"
+            >
+                Save
+            </button>
+        </mat-card-actions>
+    </form>
+    <div
+        *ngIf="payLoad"
+        class="form-row"
+    >
+        <strong>Saved the following values</strong>
+        <br>
+        {{payLoad}}
+    </div>
+</div>
